@@ -90,4 +90,11 @@
     <select id="findById" resultMap="BaseResultMap">
         select * from ss_company where id=#{id}
     </select>
+    <select id="findCount" resultType="java.lang.Long">
+        select count(1) from ss_company
+    </select>
+    <!--分页查询列表-->
+    <select id="findPage" resultMap="BaseResultMap">
+        select * from ss_company limit #{beg},#{end}
+    </select>
 </mapper>

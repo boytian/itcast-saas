@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  dao映射文件
+    1.映射文件的位置和名称需要和接口一模一样
+    2.映射文件中的namespace=dao接口的全类名，映射文件中的id=方法名
+-->
+<mapper namespace="cn.itcast.dao.system.DeptDao">
+    <resultMap id="BaseResultMap" type="cn.itcast.domain.system.Dept">
+        <id column="dept_id" property="id"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="state" property="state"/>
+        <result column="company_id" property="companyId"/>
+        <result column="company_name" property="companyName"/>
+        <!--配置一对一关系-->
+        <association property="parent" javaType="cn.itcast.domain.system.Dept"
+                     select="cn.itcast.dao.system.DeptDao.findById" column="parent_id"
+        ></association>
+    </resultMap>
+    <!--保存-->
+    <insert id="save" parameterType="cn.itcast.domain.system.Dept">
+        insert into pe_dept (dept_id, dept_name, parent_id, state, company_id, company_name
+          )
+        values (#{id}, #{deptName}, #{parent.id}, #{state}, #{companyId}, #{companyName}
+          )
+    </insert>
+    <!--更新-->
+    <update id="update" parameterType="cn.itcast.domain.system.Dept">
+        update pe_dept
+        set dept_name = #{deptName},
+          parent_id = #{parent.id},
+          state = #{state},
+          company_id = #{companyId},
+          company_name = #{companyName}
+        where dept_id = #{id}
+    </update>
+
+    <!--根据企业id查询全部
+        查询出所有的子部门数据。获取父部门数据 （配置多对一查询）
+    -->
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from pe_dept where company_id=#{companyId}
+    </select>
+
+    <!--根据id查询-->
+    <select id="findById" resultMap="BaseResultMap">
+        select * from pe_dept where dept_id=#{id}
+    </select>
+
+    <!--删除-->
+    <delete id="delete">
+        delete from pe_dept where dept_id=#{id}
+    </delete>
+</mapper>

@@ -17,6 +17,7 @@
         <div class="form-group form-inline">
             总共${page.pages} 页，共${page.total} 条数据。每页
             <select onchange="goPage(1)" name="size" class="form-control">
+                <option ${page.pageSize==3?'selected':''}>3</option>
                 <option ${page.pageSize==5?'selected':''}>5</option>
                 <option ${page.pageSize==10?'selected':''}>10</option>
             </select> 条

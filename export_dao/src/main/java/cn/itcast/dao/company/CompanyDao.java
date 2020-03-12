@@ -1,6 +1,7 @@
 package cn.itcast.dao.company;
 
 import cn.itcast.domain.company.Company;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,4 +24,12 @@ public interface CompanyDao {
 
     void delete(String id);
 
+    /**
+     * 查询总页数
+     * @return
+     */
+    long findCount();
+
+    //limit 分页查询列表
+    List findPage(@Param("beg") int beg, @Param("end") int size);
 }

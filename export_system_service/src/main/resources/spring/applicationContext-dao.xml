@@ -20,11 +20,25 @@
     </bean>
 
     <!--SqlSessionFactoryBean对象-->
+    <!--SqlSessionFactoryBean对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
         <!--别名包
             <property name="typeAliasesPackage" value="cn.itcast.domain"></property>
         -->
+        <!--整合pageHelper插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <!--方言-->
+                            <prop key="helperDialect">mysql</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!--MapperSacnnerConfigurer

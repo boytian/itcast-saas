@@ -1,15 +1,17 @@
 package cn.itcast.web.controller.company;
 
+import cn.itcast.common.entity.PageResult;
 import cn.itcast.domain.company.Company;
 import cn.itcast.service.company.CompanyService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @Author: TianTian
@@ -22,12 +24,27 @@ public class CompanyController {
     private CompanyService companyService;
 
     /**
-     * 访问 company/list链接，跳转到company-list页面
+     * 1.改造controller中的list方法
+     *  疑问：是否需要参数? 当前页和每页查询条数
+     *  * 需要调用service查询pagebean对象
+     *  * 将page对象存入到request
+     *  * 修改页面
+     * 2.修改service方法，完成分页查询
+     *  * 查询总记录数
+     *  * 通过分页的形式查询数据列表
+     *  * 构造pagebean对象返回
+     * 3.改造dao，添加两个查询方法
      */
     @RequestMapping("/list")
-    public String list(Model model) {
-        List<Company> all = companyService.findAll();
-        model.addAttribute("list",all);
+    public String list(Model model, @RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5") Integer size) {
+//        List<Company> all = companyService.findAll();
+//        model.addAttribute("list",all);
+        //======>传统
+//        PageResult pr = companyService.findAll(page,size);
+//        model.addAttribute("page",pr);
+        //=======>分页插件
+        PageInfo info = companyService.findPageByHelper(page, size);
+        model.addAttribute("page",info);
         return "company/company-list";
     }
 
