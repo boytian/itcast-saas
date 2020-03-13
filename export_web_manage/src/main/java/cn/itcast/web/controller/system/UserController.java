@@ -1,7 +1,9 @@
 package cn.itcast.web.controller.system;
 
+import cn.itcast.domain.system.Role;
 import cn.itcast.domain.system.User;
 import cn.itcast.service.company.DeptService;
+import cn.itcast.service.company.RoleService;
 import cn.itcast.service.company.UserService;
 import cn.itcast.web.controller.BaseController;
 import com.github.pagehelper.PageInfo;
@@ -88,6 +90,43 @@ public class UserController extends BaseController {
     @RequestMapping("/delete")
     public String delete(String id) {
         userService.delete(id);
+        return "redirect:/system/user/list.do";
+    }
+
+    @Resource
+    private RoleService roleService;
+    /**
+     * 用户分配角色，跳转分配页面
+     */
+    @RequestMapping("/roleList")
+    public String roleList(@RequestParam("id") String id){
+        //查询是谁要分配角色
+        User user = userService.findById(id);
+        request.setAttribute("user",user);
+        //有什么可以分配角色
+        List<Role> roleList = roleService.findAll(getLoginCompanyId());
+        request.setAttribute("roleList",roleList);
+        //当前用户具有什么角色
+        List<Role> list=roleService.findUserById(id);
+        //构造用户角色id字符串
+        String userRoleStr="";
+        for (Role role : list) {
+            userRoleStr+=role.getId();
+        }
+        request.setAttribute("userRoleStr",userRoleStr);
+        return "/system/user/user-role";
+    }
+
+    /**
+     * 保存用户的角色
+     * @param userid
+     * @param roleIds
+     * @return
+     */
+    @RequestMapping("/changeRole")
+    public String changeRole(String userid,String[] roleIds){
+        //业务
+        roleService.changeRole(userid,roleIds);
         return "redirect:/system/user/list.do";
     }
 }
