@@ -13,6 +13,11 @@
 
     <!--包扫描-->
     <context:component-scan base-package="cn.itcast.web"></context:component-scan>
+
+    <!--开启对AOP注解的支持-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
     <!--视图解析器-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"></property>

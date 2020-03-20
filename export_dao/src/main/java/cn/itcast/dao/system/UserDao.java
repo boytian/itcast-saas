@@ -18,4 +18,6 @@ public interface UserDao {
     User findById(String id);
 
     void delete(String id);
+
+    User findByEmail(String email);
 }

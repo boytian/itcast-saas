@@ -32,6 +32,9 @@
     <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
       select  * from pe_user where user_id = #{id}
     </select>
+    <select id="findByEmail" resultMap="BaseResultMap">
+        select  * from pe_user where email = #{email}
+    </select>
 
     <!--根据id删除-->
     <delete id="delete" parameterType="java.lang.String">

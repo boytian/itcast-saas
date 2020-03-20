@@ -1,6 +1,8 @@
 package cn.itcast.dao.system;
 
 import cn.itcast.domain.system.Module;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -21,4 +23,16 @@ public interface ModuleDao {
 
     //查询全部
     List<Module> findAll();
+
+    String [] findRoleAddModule(String id);
+
+    void deleteRoleModule(String roleid);
+
+    void saveRoleModule(@Param("roleid") String roleid, @Param("s")String s);
+
+    //根据belong查询
+    List<Module> findByBelong(int belong);
+
+    //根据用户id，多表查询用户可操作的菜单
+    List<Module> findByUserId(String id);
 }

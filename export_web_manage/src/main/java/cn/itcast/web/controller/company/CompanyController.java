@@ -4,6 +4,7 @@ import cn.itcast.common.entity.PageResult;
 import cn.itcast.domain.company.Company;
 import cn.itcast.service.company.CompanyService;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -35,6 +36,7 @@ public class CompanyController {
      *  * 构造pagebean对象返回
      * 3.改造dao，添加两个查询方法
      */
+    @RequiresPermissions(value = "企业管理")
     @RequestMapping("/list")
     public String list(Model model, @RequestParam(defaultValue = "1") Integer page,@RequestParam(defaultValue = "5") Integer size) {
 //        List<Company> all = companyService.findAll();

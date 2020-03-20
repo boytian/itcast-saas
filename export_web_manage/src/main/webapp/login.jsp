@@ -64,13 +64,13 @@
 <script src="../plugins/iCheck/icheck.min.js"></script>
 <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
 <script>
-    var obj = new WxLogin({
+/*    var obj = new WxLogin({
         self_redirect:false,
         id:"login_container",
         appid: "wx3bdb1192c22883f3",
         scope: "snsapi_login",
         redirect_uri: "http://note.java.itcast.cn/weixinlogin"
-    });
+    });*/
 </script>
 
 <script>

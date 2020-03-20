@@ -5,7 +5,6 @@ import cn.itcast.domain.system.User;
 import cn.itcast.service.company.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.poi.hssf.record.chart.AxisUsedRecord;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -44,5 +43,9 @@ public class UserServiceImpl implements UserService {
 
     public void delete(String id) {
         userDao.delete(id);
+    }
+
+    public User findByEmail(String email) {
+        return userDao.findByEmail(email);
     }
 }

@@ -1,5 +1,6 @@
 package cn.itcast.web.controller;
 
+import cn.itcast.domain.system.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
@@ -26,11 +27,21 @@ public class BaseController {
 
     //获取当前登录用户的企业id
     protected String getLoginCompanyId() {
-        return "1" ;//模拟当前登录用户所属的企业id
+        Object loginUser = session.getAttribute("loginUser");
+        if (loginUser!=null){
+            User user=(User)loginUser;
+            return user.getCompanyId();
+        }
+        return "" ;//模拟当前登录用户所属的企业id
     }
 
     //获取当前登录用户的企业名称
     protected String getLoginCompanyName() {
-        return "传智播客" ;//模拟当前登录用户所属的企业名称
+        Object loginUser = session.getAttribute("loginUser");
+        if (loginUser!=null){
+            User user=(User)loginUser;
+            return user.getCompanyName();
+        }
+        return "" ;//模拟当前登录用户所属的企业名称
     }
 }

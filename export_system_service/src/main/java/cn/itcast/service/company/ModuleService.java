@@ -21,4 +21,10 @@ public interface ModuleService {
     Module findById(String id);
 
     void delete(String id);
+
+    String []  findRoleAddModule(String id);
+
+    void updateRoleModule(String roleid, String moduleIds);
+
+    List<Module> findByUserId(String id);
 }

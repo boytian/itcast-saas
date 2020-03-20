@@ -1,5 +1,6 @@
 package cn.itcast.web.controller.system;
 
+import cn.itcast.common.utils.Encrypt;
 import cn.itcast.domain.system.Role;
 import cn.itcast.domain.system.User;
 import cn.itcast.service.company.DeptService;
@@ -62,6 +63,8 @@ public class UserController extends BaseController {
         user.setCompanyName(getLoginCompanyName());
         if (StringUtils.isEmpty(user.getId())){
             //执行保存
+            String password = Encrypt.md5(user.getPassword(), user.getEmail());
+            user.setPassword(password);
             userService.save(user);
         }else {
             //执行修改
