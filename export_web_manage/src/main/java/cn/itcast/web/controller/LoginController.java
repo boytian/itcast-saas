@@ -1,15 +1,13 @@
 package cn.itcast.web.controller;
 
 
-import cn.itcast.common.utils.Encrypt;
 import cn.itcast.domain.system.Module;
 import cn.itcast.domain.system.User;
-import cn.itcast.service.company.ModuleService;
-import cn.itcast.service.company.UserService;
+import cn.itcast.service.system.ModuleService;
+import cn.itcast.service.system.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;

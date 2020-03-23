@@ -2,12 +2,11 @@ package cn.itcast.web.aspect;
 
 import cn.itcast.domain.system.SysLog;
 import cn.itcast.domain.system.User;
-import cn.itcast.service.company.SysLogService;
+import cn.itcast.service.system.SysLogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 

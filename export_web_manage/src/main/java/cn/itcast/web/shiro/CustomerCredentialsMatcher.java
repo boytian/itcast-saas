@@ -37,6 +37,6 @@ public class CustomerCredentialsMatcher extends SimpleCredentialsMatcher {
         //3.对用户的输入密码加密
         password = Encrypt.md5(password,email);
         //4.比较密码
-        return dbPassword.equals(password);
+         return dbPassword.equals(password);
     }
 }

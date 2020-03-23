@@ -6,7 +6,6 @@ import cn.itcast.domain.company.Company;
 import cn.itcast.service.company.CompanyService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

@@ -18,14 +18,15 @@
     <context:component-scan base-package="cn.itcast.service"></context:component-scan>
 
 
-    <!--引入其他的配置文件 -->
-        <import resource="applicationContext-dao.xml"></import>
+    <!--引入其他的配置文件,因为配置文件加载顺序，所以必须注释 -->
+        <!--<import resource="applicationContext-dao.xml"></import>-->
 
 
 
     <!--配置事务 ： 基于xml的配置-->
     <!--1.事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--在dao里面已经配置了因为是加载到同一个容器中所以可以这样写-->
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 

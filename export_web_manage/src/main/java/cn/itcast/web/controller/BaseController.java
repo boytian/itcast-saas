@@ -25,6 +25,13 @@ public class BaseController {
     protected HttpSession session;
 
 
+    /**
+     * 获取当前登录用户
+     */
+    protected User getLoginUser() {
+        return (User) session.getAttribute("loginUser");
+    }
+
     //获取当前登录用户的企业id
     protected String getLoginCompanyId() {
         Object loginUser = session.getAttribute("loginUser");

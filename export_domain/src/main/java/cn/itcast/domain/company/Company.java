@@ -5,12 +5,13 @@ package cn.itcast.domain.company;
  * @Date: 2020/3/10 20:07
  */
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 企业实体类
  */
-public class Company {
+public class Company implements Serializable {
     private String id               ;
     private String name             ;
     private Date expirationDate     ;

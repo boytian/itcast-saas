@@ -7,8 +7,8 @@ package cn.itcast.web.shiro;
 
 import cn.itcast.domain.system.Module;
 import cn.itcast.domain.system.User;
-import cn.itcast.service.company.ModuleService;
-import cn.itcast.service.company.UserService;
+import cn.itcast.service.system.ModuleService;
+import cn.itcast.service.system.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

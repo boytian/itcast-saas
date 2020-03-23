@@ -1,8 +1,7 @@
 package cn.itcast.web.controller.system;
 
 import cn.itcast.domain.system.Module;
-import cn.itcast.domain.system.Role;
-import cn.itcast.service.company.ModuleService;
+import cn.itcast.service.system.ModuleService;
 import cn.itcast.web.controller.BaseController;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;

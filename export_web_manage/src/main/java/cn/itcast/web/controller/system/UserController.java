@@ -3,9 +3,9 @@ package cn.itcast.web.controller.system;
 import cn.itcast.common.utils.Encrypt;
 import cn.itcast.domain.system.Role;
 import cn.itcast.domain.system.User;
-import cn.itcast.service.company.DeptService;
-import cn.itcast.service.company.RoleService;
-import cn.itcast.service.company.UserService;
+import cn.itcast.service.system.DeptService;
+import cn.itcast.service.system.RoleService;
+import cn.itcast.service.system.UserService;
 import cn.itcast.web.controller.BaseController;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
@@ -68,6 +68,11 @@ public class UserController extends BaseController {
             userService.save(user);
         }else {
             //执行修改
+            User user2=userService.findById(user.getId());
+            if (user2.getPassword()!=user.getPassword()){
+                String password = Encrypt.md5(user.getPassword(), user.getEmail());
+                user.setPassword(password);
+            }
             userService.update(user);
         }
         return "redirect:/system/user/list.do";

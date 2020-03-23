@@ -1,6 +1,6 @@
 package cn.itcast.web.controller.system;
 
-import cn.itcast.service.company.SysLogService;
+import cn.itcast.service.system.SysLogService;
 import cn.itcast.web.controller.BaseController;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
