@@ -2,8 +2,10 @@ package cn.itcast.service.cargo;
 
 import cn.itcast.domain.cargo.Contract;
 import cn.itcast.domain.cargo.ContractExample;
+import cn.itcast.vo.ContractProductVo;
 import com.github.pagehelper.PageInfo;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,4 +29,6 @@ public interface ContractService {
     void submit(String id);
 
     void cancel(String id);
+
+    List<ContractProductVo> findByShipTime(String inputDate, String loginCompanyId);
 }

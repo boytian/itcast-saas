@@ -4,6 +4,7 @@ import cn.itcast.dao.cargo.ContractDao;
 import cn.itcast.domain.cargo.Contract;
 import cn.itcast.domain.cargo.ContractExample;
 import cn.itcast.service.cargo.ContractService;
+import cn.itcast.vo.ContractProductVo;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -63,6 +64,11 @@ public class ContractServiceImpl implements ContractService {
         Contract contract = contractDao.selectByPrimaryKey(id);
         contract.setState(0);
         contractDao.updateByPrimaryKeySelective(contract);
+    }
+
+    public List<ContractProductVo> findByShipTime(String inputDate, String loginCompanyId) {
+
+        return contractDao.findByShipTime(inputDate,loginCompanyId);
     }
 
 }
